@@ -9,7 +9,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-var UnAuthorizedError = errors.New("Invalid username or token")
+var UnAuthorizedError = errors.New("Invalid username or token.")
 
 func Authorization(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -31,7 +31,7 @@ func Authorization(next http.Handler) http.Handler {
 			return
 		}
 
-		var loginDetails * tools.loginDetails
+		var loginDetails *tools.LoginDetails
 		loginDetails = (*database).GetUserLoginDetails(username)
 
 		if (loginDetails == nil || (token != (*loginDetails).AuthToken)) {
